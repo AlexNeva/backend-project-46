@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import parser from './parser.js';
+import genDiff from './genDiff.js';
 
 const app = () => {
   program
@@ -10,7 +10,7 @@ const app = () => {
     // .argument('<filepath1>')
     // .argument('<filepath2>')
     .arguments('<filepath1> <filepath2>')
-    .action((filepath1, filepath2) => parser(filepath1, filepath2));
+    .action((filepath1, filepath2) => genDiff(filepath1, filepath2));
   program.parse(process.argv);
 };
 

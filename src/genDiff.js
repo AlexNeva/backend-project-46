@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const getPath = (filepath) => path.resolve(process.cwd(), filepath);
 const fileParser = (filepath) => JSON.parse(fs.readFileSync(filepath, 'utf8'));
 
-const parser = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2) => {
   const path1 = getPath(filepath1);
   const path2 = getPath(filepath2);
 
@@ -14,4 +14,4 @@ const parser = (filepath1, filepath2) => {
   console.log(parseredFile2);
 };
 
-export default parser;
+export default genDiff;
