@@ -26,9 +26,8 @@ const genDiff = (filepath1, filepath2) => {
         return { ...acc, [`+ ${key}`]: parseredFile2[key] };
       }
       return { ...acc, [`- ${key}`]: parseredFile1[key], [`+ ${key}`]: parseredFile2[key] };
-    } else {
-      return { ...acc, [key]: parseredFile1[key] };
     }
+    return { ...acc, [key]: parseredFile1[key] };
   }, {});
 
   return JSON.stringify(result, undefined, 2);
