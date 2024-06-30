@@ -14,4 +14,7 @@ mock-run:
 	gendiff __fixtures__/file1.json __fixtures__/file2.json
 
 test:
-	npx jest --coverage
+	npm test
+
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8

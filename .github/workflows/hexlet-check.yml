@@ -25,9 +25,10 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
-      - name: Upload coverage to Codeclimate
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        run: |
-          ./cc-test-reporter format-coverage -t lcov ${{ github.workspace }}/coverage/lcov.info
-          ./cc-test-reporter upload-coverage
+        with:
+          coverageCommand: make test-coverage
+          debug: true
