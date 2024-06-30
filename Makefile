@@ -10,5 +10,8 @@ lint:
 gendiff:
 	node bin/gendiff.js
 
-test:
+mock-run:
 	gendiff __fixtures__/file1.json __fixtures__/file2.json
+
+test:
+	npx jest
