@@ -29,5 +29,5 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         run: |
-          ./cc-test-reporter format-coverage -t lcov ${GITHUB_WORKSPACE}/coverage/lcov.info
+          ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
           ./cc-test-reporter upload-coverage
