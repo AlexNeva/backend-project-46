@@ -24,4 +24,4 @@ jobs:
           hexlet-id: ${{ secrets.HEXLET_ID }}
       - run: make install
       - run: make lint
-      - run: make lint
+      - run: make test
