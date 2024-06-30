@@ -2,7 +2,7 @@ import path from 'node:path';
 import fs from 'node:fs';
 import sortBy from 'lodash/sortBy.js';
 import has from 'lodash/has.js';
-import { getParser } from './parsers.js';
+import getParser from './parsers.js';
 
 const getPath = (filepath) => path.resolve(process.cwd(), filepath);
 
