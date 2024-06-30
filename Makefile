@@ -14,4 +14,4 @@ mock-run:
 	gendiff __fixtures__/file1.json __fixtures__/file2.json
 
 test:
-	npx jest
+	npx jest --coverage

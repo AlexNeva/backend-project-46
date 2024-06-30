@@ -25,3 +25,9 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
+      - name: Upload coverage to Codeclimate
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        run: |
+          ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+          ./cc-test-reporter upload-coverage
