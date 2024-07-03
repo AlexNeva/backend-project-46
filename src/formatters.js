@@ -1,12 +1,12 @@
 import isPlainObject from 'lodash/isPlainObject.js';
 
 export const stylish = (diff) => {
-  const iter = (diff, depth = 1) => {
+  const iter = (obj, depth = 1) => {
     const indentSize = 4;
     const baseIndent = ' '.repeat(indentSize * depth);
     const specialIndent = ' '.repeat(indentSize * depth - 2);
 
-    const lines = Object.entries(diff).map(([key, value]) => {
+    const lines = Object.entries(obj).map(([key, value]) => {
       const hasSpecialSymbol = key.startsWith('+') || key.startsWith('-');
 
       if (isPlainObject(value)) {
@@ -27,4 +27,4 @@ export const stylish = (diff) => {
   return `{\n${iter(diff)}\n}`;
 };
 
-export const plain = (diff) => '';
+export const plain = () => '';
