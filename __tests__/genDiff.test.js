@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import genDiff from '../src/genDiff.js';
-import { stylish } from '../src/formatters.js';
 
 let equal;
 
