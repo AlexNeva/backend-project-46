@@ -1,6 +1,5 @@
 import { program } from 'commander';
 import genDiff from './genDiff.js';
-import { plain, stylish } from './formatters.js';
 
 const app = () => {
   program
@@ -13,9 +12,8 @@ const app = () => {
 
   const [path1, path2] = program.args;
   const { format } = program.opts();
-  const formatter = format === 'stylish' ? stylish : plain;
 
-  console.log(formatter(genDiff(path1, path2)));
+  console.log(genDiff(path1, path2, format));
 };
 
 export default app;

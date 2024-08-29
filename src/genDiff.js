@@ -4,10 +4,11 @@ import sortBy from 'lodash/sortBy.js';
 import has from 'lodash/has.js';
 import isPlainObject from 'lodash/isPlainObject.js';
 import getParser from './parsers.js';
+import getFormatter from './formatters/index.js';
 
 const getPath = (filepath) => path.resolve(process.cwd(), filepath);
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName) => {
   const path1 = getPath(filepath1);
   const path2 = getPath(filepath2);
 
@@ -44,7 +45,10 @@ const genDiff = (filepath1, filepath2) => {
     }, {});
   };
 
-  return iter(parseredFile1, parseredFile2);
+  const dif = iter(parseredFile1, parseredFile2);
+  const formatter = getFormatter(formatName);
+
+  return formatter(dif);
 };
 
 export default genDiff;
