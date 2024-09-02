@@ -16,6 +16,9 @@ mock-run:
 mock-run-plain:
 	gendiff --format plain __fixtures__/deepFile1.yaml __fixtures__/deepFile2.yaml
 
+mock-run-json:
+	gendiff --format json __fixtures__/deepFile1.yaml __fixtures__/deepFile2.yaml
+
 test:
 	npm test
 
