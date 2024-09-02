@@ -51,6 +51,8 @@ export default [
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
       'operator-linebreak': ['error', 'after'],
+      'object-curly-newline': 'off',
+      'comma-dangle': 'off',
     },
   },
 ];

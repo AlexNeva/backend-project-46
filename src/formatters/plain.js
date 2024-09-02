@@ -12,7 +12,7 @@ const formatValue = (value) => {
   return value;
 };
 
-const plain = (tree) => {
+const plain = (diff) => {
   const iter = (tree, path = '') => {
     const lines = tree
       .flatMap((node) => {
@@ -44,7 +44,7 @@ const plain = (tree) => {
 
     return lines.join('\n');
   };
-  return iter(tree);
+  return iter(diff);
 };
 
 export default plain;

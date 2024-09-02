@@ -16,39 +16,40 @@ const formatValue = (value, depth) => {
   return `{${entries.join('')}\n${bracketIndent}}`;
 };
 
-const stylish = (tree) => {
+const stylish = (diff) => {
   const iter = (tree, depth = 1) => {
     const baseIndent = ' '.repeat(INDENT_SIZE * depth - 2);
     const bracketIndent = ' '.repeat(INDENT_SIZE * depth);
 
-    return tree.reduce((res, node) => {
+    const lines = tree.map((node) => {
       const { name, type, oldValue, newValue, children } = node;
       const hasChildren = !!children;
 
       if (hasChildren) {
-        return res + `\n${baseIndent}  ${name}: {${iter(children, depth + 1)}\n${bracketIndent}}`;
+        return `${baseIndent}  ${name}: {\n${iter(children, depth + 1)}\n${bracketIndent}}`;
       }
 
       switch (type) {
         case 'unchanged':
-          return res + `\n${baseIndent}  ${name}: ${formatValue(oldValue, depth)}`;
+          return `${baseIndent}  ${name}: ${formatValue(oldValue, depth)}`;
         case 'added':
-          return res + `\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`;
+          return `${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`;
         case 'removed':
-          return res + `\n${baseIndent}- ${name}: ${formatValue(oldValue, depth)}`;
+          return `${baseIndent}- ${name}: ${formatValue(oldValue, depth)}`;
         case 'updated':
           return (
-            res +
-            `\n${baseIndent}- ${name}: ${formatValue(oldValue, depth)}` +
+            `${baseIndent}- ${name}: ${formatValue(oldValue, depth)}` +
             `\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`
           );
         default:
           throw new Error('Type is not defined');
       }
-    }, '');
+    });
+
+    return lines.join('\n');
   };
 
-  return `{${iter(tree)}\n}`;
+  return `{\n${iter(diff)}\n}`;
 };
 
 export default stylish;
