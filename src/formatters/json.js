@@ -1,5 +1,3 @@
-const json = (diff) => {
-  return JSON.parse(JSON.stringify(diff));
-};
+const json = (diff) => JSON.parse(JSON.stringify(diff));
 
 export default json;
