@@ -26,29 +26,30 @@ const genDiff = (filepath1, filepath2, formatName) => {
         isPlainObject(obj1[key]) &&
         isPlainObject(obj2[key])
       ) {
-        return { ...acc, [key]: iter(obj1[key], obj2[key]) };
+        return [...acc, { name: key, children: iter(obj1[key], obj2[key]) }];
       }
 
       if (has(obj1, key) && !has(obj2, key)) {
-        return { ...acc, [`- ${key}`]: obj1[key] };
+        return [...acc, { name: key, type: 'removed', oldValue: obj1[key] }];
       }
 
       if (!has(obj1, key) && has(obj2, key)) {
-        return { ...acc, [`+ ${key}`]: obj2[key] };
+        return [...acc, { name: key, type: 'added', newValue: obj2[key] }];
       }
 
       if (obj1[key] !== obj2[key]) {
-        return { ...acc, [`- ${key}`]: obj1[key], [`+ ${key}`]: obj2[key] };
+        return [...acc, { name: key, type: 'updated', oldValue: obj1[key], newValue: obj2[key] }];
       }
 
-      return { ...acc, [key]: obj1[key] };
-    }, {});
+      return [...acc, { name: key, type: 'unchanged', oldValue: obj1[key] }];
+    }, []);
   };
 
-  const dif = iter(parseredFile1, parseredFile2);
+  const diff = iter(parseredFile1, parseredFile2);
+
   const formatter = getFormatter(formatName);
 
-  return formatter(dif);
+  return formatter(diff);
 };
 
 export default genDiff;

@@ -1,30 +1,54 @@
 import isPlainObject from 'lodash/isPlainObject.js';
 
-const stylish = (diff) => {
-  const iter = (obj, depth = 1) => {
-    const indentSize = 4;
-    const baseIndent = ' '.repeat(indentSize * depth);
-    const specialIndent = ' '.repeat(indentSize * depth - 2);
+const INDENT_SIZE = 4;
 
-    const lines = Object.entries(obj).map(([key, value]) => {
-      const hasSpecialSymbol = key.startsWith('+') || key.startsWith('-');
+const formatValue = (value, depth) => {
+  if (!isPlainObject(value)) {
+    return value;
+  }
 
-      if (isPlainObject(value)) {
-        const indent = hasSpecialSymbol ? specialIndent : baseIndent;
-        const nestedDiff = iter(value, depth + 1);
-        return `${indent}${key}: {\n${nestedDiff}\n${baseIndent}}`;
+  const indent = ' '.repeat(INDENT_SIZE * (depth + 1));
+  const bracketIndent = ' '.repeat(INDENT_SIZE * depth);
+  const entries = Object.entries(value).map(
+    ([key, val]) => `\n${indent}${key}: ${formatValue(val, depth + 1)}`
+  );
+
+  return `{${entries.join('')}\n${bracketIndent}}`;
+};
+
+const stylish = (tree) => {
+  const iter = (tree, depth = 1) => {
+    const baseIndent = ' '.repeat(INDENT_SIZE * depth - 2);
+    const bracketIndent = ' '.repeat(INDENT_SIZE * depth);
+
+    return tree.reduce((res, node) => {
+      const { name, type, oldValue, newValue, children } = node;
+      const hasChildren = !!children;
+
+      if (hasChildren) {
+        return res + `\n${baseIndent}  ${name}: {${iter(children, depth + 1)}\n${bracketIndent}}`;
       }
-      if (hasSpecialSymbol) {
-        return `${specialIndent}${key}: ${value}`;
+
+      switch (type) {
+        case 'unchanged':
+          return res + `\n${baseIndent}  ${name}: ${formatValue(oldValue, depth)}`;
+        case 'added':
+          return res + `\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`;
+        case 'removed':
+          return res + `\n${baseIndent}- ${name}: ${formatValue(oldValue, depth)}`;
+        case 'updated':
+          return (
+            res +
+            `\n${baseIndent}- ${name}: ${formatValue(oldValue, depth)}` +
+            `\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`
+          );
+        default:
+          throw new Error('Type is not defined');
       }
-
-      return `${baseIndent}${key}: ${value}`;
-    });
-
-    return lines.join('\n');
+    }, '');
   };
 
-  return `{\n${iter(diff)}\n}`;
+  return `{${iter(tree)}\n}`;
 };
 
 export default stylish;
