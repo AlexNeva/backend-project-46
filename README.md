@@ -58,3 +58,19 @@ Run the following command to create a global link:
 ```sh
 npm link
 ```
+
+## Getting Started
+
+To use the **gendiff** tool, run the following command in your terminal:
+
+```sh
+gendiff [options] <filepath1> <filepath2>
+```
+
+This command compares two configuration files and outputs the differences between them.
+
+**Options**:
+
+- `-V`, `--version`: Outputs the version number of the **gendiff** tool.
+- `-f`, `--format [type]`: Specifies the output format of the difference. The default format is **"stylish"**.
+- `-h`, `--help`: Displays the help information for the command.
