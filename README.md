@@ -13,3 +13,48 @@ The tool provides the flexibility to output the differences in various formats, 
 With an intuitive user interface and robust functionality, the **File Difference Analyzer** is an essential utility for developers, writers, and anyone who needs to keep track of file changes efficiently.
 
 Feel free to adjust any part of this to better fit your needs!
+
+## Getting Started
+
+Follow these steps to set up and link the project from GitHub.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+- Node.js (version 14.x or higher)
+- npm (Node Package Manager)
+
+### Installation
+
+1. **Clone the Repository**
+
+Open your terminal and clone the repository from GitHub:
+
+```sh
+git clone https://github.com/AlexNeva/backend-project-46.git
+```
+
+2. **Navigate to the Project Directory**
+
+Change your directory to the project folder:
+
+```sh
+cd backend-project-46
+```
+
+3. **Install Dependencies**
+
+Install the required dependencies using npm:
+
+```sh
+make install
+```
+
+4. **Linking the Project**
+
+Run the following command to create a global link:
+
+```sh
+npm link
+```
