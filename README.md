@@ -72,5 +72,10 @@ This command compares two configuration files and outputs the differences betwee
 **Options**:
 
 - `-V`, `--version`: Outputs the version number of the **gendiff** tool.
-- `-f`, `--format [type]`: Specifies the output format of the difference. The default format is **"stylish"**.
+- `-f`, `--format [type]`: Specifies the output format of the difference. Available formats include:
+
+  - `"stylish"` (default)
+  - `"plain"`
+  - `"json"`
+
 - `-h`, `--help`: Displays the help information for the command.
