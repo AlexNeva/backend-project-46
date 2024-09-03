@@ -69,7 +69,7 @@ gendiff [options] <filepath1> <filepath2>
 
 This command compares two configuration files and outputs the differences between them.
 
-**Options**:
+### Options:
 
 - `-V`, `--version`: Outputs the version number of the **gendiff** tool.
 - `-f`, `--format [type]`: Specifies the output format of the difference. Available formats include:
@@ -79,3 +79,7 @@ This command compares two configuration files and outputs the differences betwee
   - `"json"`
 
 - `-h`, `--help`: Displays the help information for the command.
+
+### Example:
+
+[![asciicast](https://asciinema.org/a/GtYKqcJYicszdX11r7OhoY9PL.svg)](https://asciinema.org/a/GtYKqcJYicszdX11r7OhoY9PL)
