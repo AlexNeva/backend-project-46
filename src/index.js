@@ -8,7 +8,7 @@ const app = () => {
     .version('1.0.0')
     .option('-f, --format [type]', 'output format', 'stylish')
     .arguments('<filepath1> <filepath2>');
-  program.parse();
+  program.parse(process.argv);
 
   const [path1, path2] = program.args;
   const { format } = program.opts();
