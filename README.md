@@ -4,6 +4,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/163df6c5df78b47a2ed7/maintainability)](https://codeclimate.com/github/AlexNeva/backend-project-46/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/163df6c5df78b47a2ed7/test_coverage)](https://codeclimate.com/github/AlexNeva/backend-project-46/test_coverage)
+
 # About The Project
 
 The **File Difference Analyzer** is a powerful tool designed to compare two files and accurately identify their differences. Whether you're working with text, code, or data files, this application streamlines the process of spotting changes, ensuring that no detail goes unnoticed.
