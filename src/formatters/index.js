@@ -11,7 +11,7 @@ const getFormatter = (formatName) => {
     case 'json':
       return json;
     default:
-      throw new Error('formatName is not defined');
+      return stylish;
   }
 };
 
