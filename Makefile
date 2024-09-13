@@ -11,13 +11,13 @@ gendiff:
 	node bin/gendiff.js
 
 mock-run:
-	gendiff __fixtures__/deepFile1.yaml __fixtures__/deepFile2.yaml
+	gendiff __fixtures__/file1.yaml __fixtures__/file2.yaml
 
 mock-run-plain:
-	gendiff --format plain __fixtures__/deepFile1.yaml __fixtures__/deepFile2.yaml
+	gendiff --format plain __fixtures__/file1.yaml __fixtures__/file2.yaml
 
 mock-run-json:
-	gendiff --format json __fixtures__/deepFile1.yaml __fixtures__/deepFile2.yaml
+	gendiff --format json __fixtures__/file.yaml __fixtures__/file2.yaml
 
 test:
 	npm test
