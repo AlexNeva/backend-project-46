@@ -20,12 +20,7 @@ const genDiff = (filepath1, filepath2, formatName) => {
     const allSorteredKeys = sortBy([...allKeys]);
 
     return allSorteredKeys.reduce((acc, key) => {
-      if (
-        has(obj1, key) &&
-        has(obj2, key) &&
-        isPlainObject(obj1[key]) &&
-        isPlainObject(obj2[key])
-      ) {
+      if (has(obj1, key) && has(obj2, key) && isPlainObject(obj1[key]) && isPlainObject(obj2[key])) {
         return [...acc, { name: key, children: iter(obj1[key], obj2[key]) }];
       }
 
