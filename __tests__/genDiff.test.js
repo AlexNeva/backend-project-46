@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import genDiff from '../src/genDiff.js';
+import genDiff from '../src/index.js';
 
 let equal;
 let formatName;
@@ -68,7 +68,7 @@ describe('plain diff', () => {
 describe('json diff', () => {
   beforeAll(() => {
     formatName = 'json';
-    equal = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), '__fixtures__/jsonDiff.json')));
+    equal = fs.readFileSync(path.resolve(process.cwd(), '__fixtures__/jsonDiff.txt'), 'utf8');
   });
 
   test('diff json files', () => {
