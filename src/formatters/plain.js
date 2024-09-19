@@ -16,7 +16,13 @@ const plain = (diff) => {
   const iter = (tree, path = '') => {
     const lines = tree
       .flatMap((node) => {
-        const { name, type, oldValue, newValue, children } = node;
+        const {
+                name,
+                type,
+                oldValue,
+                newValue,
+                children,
+              } = node;
         const hasChildren = !!children;
 
         const currentPath = path ? `${path}.${name}` : name;
