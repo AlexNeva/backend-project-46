@@ -55,6 +55,7 @@ export default [
       'operator-linebreak': ['error', 'after'],
       'object-curly-newline': 'off',
       'comma-dangle': 'off',
+			"operator-linebreak": ["error", "before"]
     },
   },
 ];
