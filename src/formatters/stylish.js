@@ -10,7 +10,7 @@ const formatValue = (value, depth) => {
   const indent = ' '.repeat(INDENT_SIZE * (depth + 1));
   const bracketIndent = ' '.repeat(INDENT_SIZE * depth);
   const entries = Object.entries(value)
-                        .map(([key, val]) => `\n${indent}${key}: ${formatValue(val, depth + 1)}`);
+    .map(([key, val]) => `\n${indent}${key}: ${formatValue(val, depth + 1)}`);
 
   return `{${entries.join('')}\n${bracketIndent}}`;
 };
@@ -22,12 +22,12 @@ const stylish = (diff) => {
 
     const lines = tree.map((node) => {
       const {
-              name,
-              type,
-              oldValue,
-              newValue,
-              children,
-            } = node;
+        name,
+        type,
+        oldValue,
+        newValue,
+        children,
+      } = node;
       const hasChildren = !!children;
 
       if (hasChildren) {
