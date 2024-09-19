@@ -49,10 +49,10 @@ const testCases = [
 ];
 
 test.each(testCases)('getDiff($ext1, $ext2, $format)', ({
-  ext1, 
+  ext1,
   ext2,
-  format, 
-  expected 
+  format,
+  expected
 }) => {
   const file1 = getFixturePath(`file1.${ext1}`);
   const file2 = getFixturePath(`file2.${ext2}`);
