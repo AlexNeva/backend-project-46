@@ -52,10 +52,9 @@ export default [
       'import/no-named-as-default-member': 'off',
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
-      'operator-linebreak': ['error', 'after'],
+      'operator-linebreak': ['error', 'before'],
       'object-curly-newline': 'off',
       'comma-dangle': 'off',
-			"operator-linebreak": ["error", "before"]
     },
   },
 ];
