@@ -16,7 +16,7 @@ const plain = (diff) => {
   const iter = (tree, path = '') => {
     const lines = tree
       .flatMap((node) => {
-  const {
+        const {
           name,
           type,
           oldValue,
@@ -40,7 +40,7 @@ const plain = (diff) => {
             return `Property '${currentPath}' was removed`;
           case 'updated':
             return `Property '${currentPath}' was updated. From ${formatValue(
-              oldValue
+              oldValue,
             )} to ${formatValue(newValue)}`;
           default:
             throw new Error('Type is not defined');

@@ -44,7 +44,7 @@ const stylish = (diff) => {
         case 'updated':
           return `${baseIndent}- ${name}: ${formatValue(
             oldValue,
-            depth
+            depth,
           )}\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`;
         default:
           throw new Error('Type is not defined');
