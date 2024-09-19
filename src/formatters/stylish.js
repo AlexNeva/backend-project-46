@@ -9,7 +9,9 @@ const formatValue = (value, depth) => {
 
   const indent = ' '.repeat(INDENT_SIZE * (depth + 1));
   const bracketIndent = ' '.repeat(INDENT_SIZE * depth);
-  const entries = Object.entries(value).map(([key, val]) => `\n${indent}${key}: ${formatValue(val, depth + 1)}`);
+  const entries = Object.entries(value).map(
+    ([key, val]) => `\n${indent}${key}: ${formatValue(val, depth + 1)}`
+  );
 
   return `{${entries.join('')}\n${bracketIndent}}`;
 };
@@ -35,10 +37,10 @@ const stylish = (diff) => {
         case 'removed':
           return `${baseIndent}- ${name}: ${formatValue(oldValue, depth)}`;
         case 'updated':
-          return `${baseIndent}- ${name}: ${formatValue(oldValue, depth)}\n${baseIndent}+ ${name}: ${formatValue(
-            newValue,
+          return `${baseIndent}- ${name}: ${formatValue(
+            oldValue,
             depth
-          )}`;
+          )}\n${baseIndent}+ ${name}: ${formatValue(newValue, depth)}`;
         default:
           throw new Error('Type is not defined');
       }

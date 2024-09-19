@@ -33,7 +33,9 @@ const plain = (diff) => {
           case 'removed':
             return `Property '${currentPath}' was removed`;
           case 'updated':
-            return `Property '${currentPath}' was updated. From ${formatValue(oldValue)} to ${formatValue(newValue)}`;
+            return `Property '${currentPath}' was updated. From ${formatValue(
+              oldValue
+            )} to ${formatValue(newValue)}`;
           default:
             throw new Error('Type is not defined');
         }
