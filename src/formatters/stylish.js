@@ -28,13 +28,10 @@ const stylish = (diff) => {
         newValue,
         children,
       } = node;
-      const hasChildren = !!children;
-
-      if (hasChildren) {
-        return `${baseIndent}  ${name}: {\n${iter(children, depth + 1)}\n${bracketIndent}}`;
-      }
 
       switch (type) {
+        case 'nested':
+          return `${baseIndent}  ${name}: {\n${iter(children, depth + 1)}\n${bracketIndent}}`;
         case 'unchanged':
           return `${baseIndent}  ${name}: ${formatValue(oldValue, depth)}`;
         case 'added':

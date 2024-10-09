@@ -23,15 +23,12 @@ const plain = (diff) => {
           newValue,
           children,
         } = node;
-        const hasChildren = !!children;
 
         const currentPath = path ? `${path}.${name}` : name;
 
-        if (hasChildren) {
-          return iter(children, currentPath);
-        }
-
         switch (type) {
+          case 'nested':
+            return iter(children, currentPath);
           case 'unchanged':
             return '';
           case 'added':

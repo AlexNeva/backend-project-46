@@ -10,7 +10,7 @@ const buildDiff = (obj1, obj2) => {
         && has(obj2, key)
         && isPlainObject(obj1[key])
         && isPlainObject(obj2[key])) {
-      return [...acc, { name: key, children: buildDiff(obj1[key], obj2[key]) }];
+      return [...acc, { name: key, type: 'nested', children: buildDiff(obj1[key], obj2[key]) }];
     }
     if (has(obj1, key) && !has(obj2, key)) {
       return [...acc, { name: key, type: 'removed', oldValue: obj1[key] }];
